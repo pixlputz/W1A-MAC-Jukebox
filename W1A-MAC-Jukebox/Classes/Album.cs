@@ -5,6 +5,11 @@ using System.Text;
 
 namespace W1A_MAC_Jukebox.Classes
 {
+   //* CW: ID
+   //* CW: Description
+   //* CW: List of Songs
+   //* CW: Constructor
+
    class Album
    {
       public int ID { get; set; }

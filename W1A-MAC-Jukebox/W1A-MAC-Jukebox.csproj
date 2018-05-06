@@ -43,6 +43,7 @@
     <Compile Include="Classes\Album.cs" />
     <Compile Include="Classes\Jukebox.cs" />
     <Compile Include="Classes\Menu.cs" />
+    <Compile Include="Classes\MenuOption.cs" />
     <Compile Include="Classes\Note.cs" />
     <Compile Include="Classes\Song.cs" />
     <Compile Include="Program.cs" />

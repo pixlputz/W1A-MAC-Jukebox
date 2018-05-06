@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using W1A_MAC_Jukebox.Classes;
 
 namespace W1A_MAC_Jukebox
 {
@@ -15,6 +16,31 @@ namespace W1A_MAC_Jukebox
       {
          //Entry Point:
 
+         //Build new Jukebox object:
+         Classes.Jukebox jukebox = new Classes.Jukebox();
+
+         jukebox.Setup();
+
+         //jukebox.Play(jukebox.Albums[0].Songs[0]);
+         //foreach (Album album in jukebox.Albums)
+         //{
+         //   Console.WriteLine("");
+         //   Console.WriteLine(@" Now Playing each Song in Album: {0}) {1}:", album.ID, album.Description);
+         //   foreach (Song song in album.Songs)
+         //   {
+         //      Console.WriteLine(@" - Now Playing Song: {0}) {1}...", song.ID, song.Description);
+         //      jukebox.Play(song);
+         //   }
+         //}
+         //Console.WriteLine("");
+         //Console.WriteLine(" Bdeep, dbeep, bdp - ... That's All folks!!!");
+
+         while (jukebox.Playing)
+         {
+            jukebox.MainMenuSelection();
+         }
+         Console.Write("     Press any key to continue closing...");
+         Console.ReadLine();
 
       }
 

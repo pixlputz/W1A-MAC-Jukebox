@@ -18,6 +18,43 @@ namespace W1A_MAC_Jukebox.Classes
 
    class Menu
    {
+      public string Name { get; set; }
+      public List<MenuOption> Options { get; set; }
+
+      public Menu(string name, List<MenuOption> options)
+      {
+         Name = Name;
+         Options = options;
+      }
+
+      void PrintMenuOptions()
+      {
+         string paddingLeft = "     ";
+
+         int count = 1;
+         foreach (MenuOption option in Options)
+         {
+            Console.WriteLine(paddingLeft + $"{count++} {option.Description}");
+         }
+         Console.WriteLine("");
+         Console.Write(paddingLeft + "Slection: > ");
+      }
+
+      public Action SelectOption()
+      {
+         string paddingLeft = "     ";
+
+         PrintMenuOptions();
+         string input = Console.ReadLine();
+         int index = 0;
+         bool valid = int.TryParse(input, out index);
+         if (!valid || index <= 0 || index > Options.Count)
+         {
+            Console.WriteLine(paddingLeft + "Please make a valid selection.");
+            return null;
+         }
+         return Options[index - 1].Action;
+      }
 
 
    }
