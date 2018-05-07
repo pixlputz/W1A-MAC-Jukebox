@@ -6,17 +6,18 @@ using System.Threading;
 
 namespace W1A_MAC_Jukebox.Classes
 {
+   //Requirements:
    //* CW: Contain a bool that tells the program that we are 'playing' or accessing the Jukebox.
    //* CW: CHANGED: FROM: "Contain list of available songs to play." - TO: Contain a list of available albums.
-   //* INW: Setup() method: Will be called to initialize the state of our Jukebox object:
+   //* CW: Setup() method: Will be called to initialize the state of our Jukebox object:
    //                       - Add Songs
    //                       - Welcome Message
    //                       - Anything else we need to do to set up the application.
    //       NOTE: This will fill the intent of the Constructor for this class.
-   //* INW: AddSongs() method: Create Individual Songs and add them to the Songs collection.
-   //* INW: ADDED: AddAlbums() method: Create Individual Albums and add them to the Albums collection.
-   //* INW: Play() method: identify a Song to Play (user selection), and play song (accessing specific Song object).
-   //* INW: ADDED: Stop() method: Stop Playing Jukebox.
+   //* CW: AddSongs() method: Create Individual Songs and add them to the Songs collection.
+   //* CW: ADDED: AddAlbums() method: Create Individual Albums and add them to the Albums collection.
+   //* CW: Play() method: identify a Song to Play (user selection), and play song (accessing specific Song object).
+   //* CW: ADDED: Stop() method: Stop Playing Jukebox.
 
    class Jukebox
    {
@@ -49,7 +50,6 @@ namespace W1A_MAC_Jukebox.Classes
          //Add albums/songs
          //Display Welcome Message
          //Do any other work, etc.
-         //...
 
          //AddAlbums:
          AddAlbums();               //Also adds related songs to each album
@@ -65,8 +65,6 @@ namespace W1A_MAC_Jukebox.Classes
          A2S2Menu = BuildA2S2Menu();
          A2S3Menu = BuildA2S3Menu();
 
-         Playing = true;
-
          InAlbum1Section = false;
          InAlbum2Section = false;
          InA1S1Section = false;
@@ -74,6 +72,8 @@ namespace W1A_MAC_Jukebox.Classes
          InA2S1Section = false;
          InA2S2Section = false;
          InA2S3Section = false;
+
+         Playing = true;
       }
 
       private void DisplayWelcomeMessage()
@@ -191,9 +191,6 @@ namespace W1A_MAC_Jukebox.Classes
             });
       }
 
-
-
-
       public void MainMenuSelection()
       {
          Console.WriteLine(paddingLeft + MainMenu.Name + ":");
@@ -203,7 +200,6 @@ namespace W1A_MAC_Jukebox.Classes
             action.Invoke();
          }
       }
-
 
       private void Album1Selection()
       {
@@ -420,8 +416,6 @@ namespace W1A_MAC_Jukebox.Classes
          InA2S3Section = false;
       }
 
-
-
       private void PlayAllSongsSelection()
       {
          BuildMainHeader();
@@ -505,7 +499,7 @@ namespace W1A_MAC_Jukebox.Classes
          DisplayWelcomeMessage();
       }
 
-      // BUILD Ojbects: ---------------------------------------------------------------------------------------
+      // BUILD Albums, Songs, Notes: ---------------------------------------------------------------------------------------
 
       private void AddAlbums()
       {
@@ -1174,9 +1168,5 @@ namespace W1A_MAC_Jukebox.Classes
       {
          Playing = false;
       }
-
-
-
    }
-
 }

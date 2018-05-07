@@ -5,6 +5,7 @@ using System.Text;
 
 namespace W1A_MAC_Jukebox.Classes
 {
+   //Requirements:
    //* CW: ID
    //* CW: Description
    //* CW: List of Songs
@@ -22,7 +23,5 @@ namespace W1A_MAC_Jukebox.Classes
          ID = id;
          Description = description;
       }
-
    }
-
 }

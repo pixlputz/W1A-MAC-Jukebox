@@ -5,6 +5,7 @@ using System.Text;
 
 namespace W1A_MAC_Jukebox.Classes
 {
+   //Requirements:
    //* CW: Contain unique identifier of some kind (name/ID), used by Jukebox to identify & select desired Song object.
    //* CW: Properties: Times played, Description, etc - Details to display under selection process.
    //* CW: Contain list of Note objects.
@@ -46,7 +47,5 @@ namespace W1A_MAC_Jukebox.Classes
          //Increment TimesPlayed:
          this.TimesPlayed++;
       }
-
    }
-
 }

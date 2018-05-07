@@ -5,6 +5,8 @@ using System.Text;
 
 namespace W1A_MAC_Jukebox.Classes
 {
+   //Extra Class not required; used to build MenuOptions into each Menu object.
+
    class MenuOption
    {
       public Action Action { get; set; }
@@ -15,7 +17,5 @@ namespace W1A_MAC_Jukebox.Classes
          Action = action;
          Description = description;
       }
-
    }
-
 }
