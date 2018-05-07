@@ -23,7 +23,7 @@ namespace W1A_MAC_Jukebox.Classes
 
       public Menu(string name, List<MenuOption> options)
       {
-         Name = Name;
+         Name = name;
          Options = options;
       }
 

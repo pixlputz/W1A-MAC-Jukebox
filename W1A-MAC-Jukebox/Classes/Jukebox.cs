@@ -97,8 +97,8 @@ namespace W1A_MAC_Jukebox.Classes
             "Main Menu",
             new List<MenuOption>
             {
-               new MenuOption(Album1Selection, "Album 1"),
-               new MenuOption(Album2Selection, "Album 2"),
+               new MenuOption(Album1Selection, "Album 1: " + Albums[0].Description),
+               new MenuOption(Album2Selection, "Album 2: " + Albums[1].Description),
                new MenuOption(PlayAllSongsSelection, "Play All Songs"),
                new MenuOption(ExitApplicationSelection, "Exit Application"),
             });
@@ -111,8 +111,8 @@ namespace W1A_MAC_Jukebox.Classes
             "Album 1 Menu",
             new List<MenuOption>
             {
-               new MenuOption(A1S1Selection, "Song 1"),
-               new MenuOption(A1S2Selection, "Song 2"),
+               new MenuOption(A1S1Selection, "Song 1: " + Albums[0].Songs[0].Description),
+               new MenuOption(A1S2Selection, "Song 2: " + Albums[0].Songs[1].Description),
                new MenuOption(ExitAlbum1Selection, "Exit Album"),
             });
       }
@@ -124,9 +124,9 @@ namespace W1A_MAC_Jukebox.Classes
             "Album 2 Menu",
             new List<MenuOption>
             {
-               new MenuOption(A2S1Selection, "Song 1"),
-               new MenuOption(A2S2Selection, "Song 2"),
-               new MenuOption(A2S3Selection, "Song 3"),
+               new MenuOption(A2S1Selection, "Song 1: " + Albums[1].Songs[0].Description),
+               new MenuOption(A2S2Selection, "Song 2: " + Albums[1].Songs[1].Description),
+               new MenuOption(A2S3Selection, "Song 3: " + Albums[1].Songs[2].Description),
                new MenuOption(ExitAlbum2Selection, "Exit Album"),
             });
       }
@@ -135,11 +135,11 @@ namespace W1A_MAC_Jukebox.Classes
       {
          BuildMainHeader();
          return new Menu(
-            "Album 1; Song 1 Menu:",
+            "Album 1; Song 1 Menu",
             new List<MenuOption>
             {
                new MenuOption(A1S1PlaySelection, "Play"),
-               new MenuOption(ExitApplicationSelection, "Exit Application"),
+               new MenuOption(ExitA1S1Selection, "Exit Song Selection"),
             });
       }
 
@@ -147,11 +147,11 @@ namespace W1A_MAC_Jukebox.Classes
       {
          BuildMainHeader();
          return new Menu(
-            "Album 1; Song 2 Menu:",
+            "Album 1; Song 2 Menu",
             new List<MenuOption>
             {
                new MenuOption(A1S2PlaySelection, "Play"),
-               new MenuOption(ExitApplicationSelection, "Exit Application"),
+               new MenuOption(ExitA1S2Selection, "Exit Song Selection"),
             });
       }
 
@@ -159,11 +159,11 @@ namespace W1A_MAC_Jukebox.Classes
       {
          BuildMainHeader();
          return new Menu(
-            "Album 2; Song 1 Menu:",
+            "Album 2; Song 1 Menu",
             new List<MenuOption>
             {
                new MenuOption(A2S1PlaySelection, "Play"),
-               new MenuOption(ExitApplicationSelection, "Exit Application"),
+               new MenuOption(ExitA2S1Selection, "Exit Song Selection"),
             });
       }
 
@@ -171,11 +171,11 @@ namespace W1A_MAC_Jukebox.Classes
       {
          BuildMainHeader();
          return new Menu(
-            "Album 2; Song 2 Menu:",
+            "Album 2; Song 2 Menu",
             new List<MenuOption>
             {
                new MenuOption(A2S2PlaySelection, "Play"),
-               new MenuOption(ExitApplicationSelection, "Exit Application"),
+               new MenuOption(ExitA2S2Selection, "Exit Song Selection"),
             });
       }
 
@@ -183,11 +183,11 @@ namespace W1A_MAC_Jukebox.Classes
       {
          BuildMainHeader();
          return new Menu(
-            "Album 2; Song 3 Menu:",
+            "Album 2; Song 3 Menu",
             new List<MenuOption>
             {
                new MenuOption(A2S3PlaySelection, "Play"),
-               new MenuOption(ExitApplicationSelection, "Exit Application"),
+               new MenuOption(ExitA2S3Selection, "Exit Song Selection"),
             });
       }
 
@@ -196,6 +196,7 @@ namespace W1A_MAC_Jukebox.Classes
 
       public void MainMenuSelection()
       {
+         Console.WriteLine(paddingLeft + MainMenu.Name + ":");
          Action action = MainMenu.SelectOption();
          if (action != null)
          {
@@ -210,6 +211,7 @@ namespace W1A_MAC_Jukebox.Classes
          while (InAlbum1Section)
          {
             BuildMainHeader();
+            Console.WriteLine(paddingLeft + Album1Menu.Name + ": Album Name: " + Albums[0].Description);
             Action action = Album1Menu.SelectOption();
             if (action != null)
             {
@@ -224,6 +226,7 @@ namespace W1A_MAC_Jukebox.Classes
          while (InAlbum2Section)
          {
             BuildMainHeader();
+            Console.WriteLine(paddingLeft + Album2Menu.Name + ": Album Name: " + Albums[1].Description);
             Action action = Album2Menu.SelectOption();
             if (action != null)
             {
@@ -238,6 +241,15 @@ namespace W1A_MAC_Jukebox.Classes
          while (InA1S1Section)
          {
             BuildMainHeader();
+            Song song = Albums[0].Songs[0];
+
+            Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
+            Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
+            Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
+            Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
+            Console.WriteLine("");
+
+            Console.WriteLine(paddingLeft + A1S1Menu.Name + ": Song Name: " + song.Description);
             Action action = A1S1Menu.SelectOption();
             if (action != null)
             {
@@ -252,6 +264,15 @@ namespace W1A_MAC_Jukebox.Classes
          while (InA1S2Section)
          {
             BuildMainHeader();
+            Song song = Albums[0].Songs[1];
+
+            Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
+            Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
+            Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
+            Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
+            Console.WriteLine("");
+
+            Console.WriteLine(paddingLeft + A1S2Menu.Name + ": Song Name: " + song.Description);
             Action action = A1S2Menu.SelectOption();
             if (action != null)
             {
@@ -266,6 +287,15 @@ namespace W1A_MAC_Jukebox.Classes
          while (InA2S1Section)
          {
             BuildMainHeader();
+            Song song = Albums[1].Songs[0];
+
+            Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
+            Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
+            Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
+            Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
+            Console.WriteLine("");
+
+            Console.WriteLine(paddingLeft + A2S1Menu.Name + ": Song Name: " + song.Description);
             Action action = A2S1Menu.SelectOption();
             if (action != null)
             {
@@ -280,6 +310,15 @@ namespace W1A_MAC_Jukebox.Classes
          while (InA2S2Section)
          {
             BuildMainHeader();
+            Song song = Albums[1].Songs[1];
+
+            Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
+            Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
+            Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
+            Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
+            Console.WriteLine("");
+
+            Console.WriteLine(paddingLeft + A2S2Menu.Name + ": Song Name: " + song.Description);
             Action action = A2S2Menu.SelectOption();
             if (action != null)
             {
@@ -294,6 +333,15 @@ namespace W1A_MAC_Jukebox.Classes
          while (InA2S3Section)
          {
             BuildMainHeader();
+            Song song = Albums[1].Songs[2];
+
+            Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
+            Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
+            Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
+            Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
+            Console.WriteLine("");
+
+            Console.WriteLine(paddingLeft + A2S3Menu.Name + ": Song Name: " + song.Description);
             Action action = A2S3Menu.SelectOption();
             if (action != null)
             {
@@ -308,15 +356,11 @@ namespace W1A_MAC_Jukebox.Classes
          Song song = Albums[0].Songs[0];
 
          Console.WriteLine(paddingLeft + @"Selection: Album 1 Song: {0}) {1}", song.ID, song.Description);
-         Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
-         Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
-         Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
-         song.TimesPlayed++;
-         Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
          Console.WriteLine("");
-         Console.Write(paddingLeft + @"Now Playing...");
+         Console.Write(paddingLeft + @"Now Playing: {0}...", song.Title);
 
          Play(song);
+         song.TimesPlayed++;
          InA1S1Section = false;
       }
 
@@ -326,15 +370,11 @@ namespace W1A_MAC_Jukebox.Classes
          Song song = Albums[0].Songs[1];
 
          Console.WriteLine(paddingLeft + @"Selection: Album 1 Song: {0}) {1}", song.ID, song.Description);
-         Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
-         Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
-         Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
-         song.TimesPlayed++;
-         Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
          Console.WriteLine("");
-         Console.Write(paddingLeft + @"Now Playing...");
+         Console.Write(paddingLeft + @"Now Playing: {0}...", song.Title);
 
          Play(song);
+         song.TimesPlayed++;
          InA1S2Section = false;
       }
 
@@ -344,15 +384,11 @@ namespace W1A_MAC_Jukebox.Classes
          Song song = Albums[1].Songs[0];
 
          Console.WriteLine(paddingLeft + @"Selection: Album 1 Song: {0}) {1}", song.ID, song.Description);
-         Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
-         Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
-         Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
-         song.TimesPlayed++;
-         Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
          Console.WriteLine("");
-         Console.Write(paddingLeft + @"Now Playing...");
+         Console.Write(paddingLeft + @"Now Playing: {0}...", song.Title);
 
          Play(song);
+         song.TimesPlayed++;
          InA2S1Section = false;
       }
 
@@ -362,15 +398,11 @@ namespace W1A_MAC_Jukebox.Classes
          Song song = Albums[1].Songs[1];
 
          Console.WriteLine(paddingLeft + @"Selection: Album 1 Song: {0}) {1}", song.ID, song.Description);
-         Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
-         Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
-         Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
-         song.TimesPlayed++;
-         Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
          Console.WriteLine("");
-         Console.Write(paddingLeft + @"Now Playing...");
+         Console.Write(paddingLeft + @"Now Playing: {0}...", song.Title);
 
          Play(song);
+         song.TimesPlayed++;
          InA2S2Section = false;
       }
 
@@ -380,15 +412,11 @@ namespace W1A_MAC_Jukebox.Classes
          Song song = Albums[1].Songs[2];
 
          Console.WriteLine(paddingLeft + @"Selection: Album 1 Song: {0}) {1}", song.ID, song.Description);
-         Console.WriteLine(paddingLeft + @"Song Title: {0}", song.Title);
-         Console.WriteLine(paddingLeft + @"Song Author: {0}", song.Author);
-         Console.WriteLine(paddingLeft + @"Song Source: {0}", song.Reference);
-         song.TimesPlayed++;
-         Console.WriteLine(paddingLeft + @"Times Played: {0}", song.TimesPlayed);
          Console.WriteLine("");
-         Console.Write(paddingLeft + @"Now Playing...");
+         Console.Write(paddingLeft + @"Now Playing: {0}...", song.Title);
 
          Play(song);
+         song.TimesPlayed++;
          InA2S3Section = false;
       }
 
@@ -397,6 +425,8 @@ namespace W1A_MAC_Jukebox.Classes
       private void PlayAllSongsSelection()
       {
          BuildMainHeader();
+         Console.WriteLine("");
+         Console.WriteLine(paddingLeft + "Selected: Play All Songs:");
          foreach (Album album in Albums)
          {
             Console.WriteLine("");
@@ -405,10 +435,11 @@ namespace W1A_MAC_Jukebox.Classes
             {
                Console.WriteLine(paddingLeft + @" - Now Playing Song: {0}) {1}...", song.ID, song.Description);
                Play(song);
+               song.TimesPlayed++;
             }
          }
-         Console.WriteLine("");
          //Console.WriteLine(" Bdeep, dbeep, bdp - ... That's All folks!!!");
+         BuildMainHeader();
       }
 
       private void ExitApplicationSelection()
@@ -429,6 +460,41 @@ namespace W1A_MAC_Jukebox.Classes
       private void ExitAlbum2Selection()
       {
          InAlbum2Section = false;
+         BuildMainHeader();
+         BuildMainMenu();
+      }
+
+      private void ExitA1S1Selection()
+      {
+         InA1S1Section = false;
+         BuildMainHeader();
+         BuildMainMenu();
+      }
+
+      private void ExitA1S2Selection()
+      {
+         InA1S2Section = false;
+         BuildMainHeader();
+         BuildMainMenu();
+      }
+
+      private void ExitA2S1Selection()
+      {
+         InA2S1Section = false;
+         BuildMainHeader();
+         BuildMainMenu();
+      }
+
+      private void ExitA2S2Selection()
+      {
+         InA2S2Section = false;
+         BuildMainHeader();
+         BuildMainMenu();
+      }
+
+      private void ExitA2S3Selection()
+      {
+         InA2S3Section = false;
          BuildMainHeader();
          BuildMainMenu();
       }
@@ -1101,7 +1167,7 @@ namespace W1A_MAC_Jukebox.Classes
             Console.Beep(note.Frequency, note.Duration);
             Thread.Sleep(note.Sleep);
          }
-         Stop();
+         //Stop();
       }
 
       public void Stop()
